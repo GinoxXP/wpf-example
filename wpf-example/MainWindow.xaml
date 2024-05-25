@@ -7,7 +7,14 @@
         xmlns:view="clr-namespace:wpf_example.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <view:SignUpView/>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="View/Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Background="{StaticResource Brush.Background}">
+        <view:SignUpView MaxHeight="300" MaxWidth="300"/>
     </Grid>
 </Window>

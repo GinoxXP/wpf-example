@@ -10,33 +10,43 @@
     d:DataContext="{d:DesignInstance Type=vm:SignUpViewModel, IsDesignTimeCreatable=True}"
     mc:Ignorable="d" 
     d:DesignHeight="450" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <TextBlock Text="Sign up to WPF Example" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource Style.Text.Header}"/>
+        <Border Grid.Row="1" Background="{StaticResource Brush.Background.Accent}" CornerRadius="{StaticResource Radius}">
+            <Grid Margin="16">
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Username" VerticalAlignment="Center" />
 
-            <TextBlock Text="Username"/>
-            <TextBox Grid.Row="1" Text="{Binding Username}"/>
-        </Grid>
+                <TextBox Grid.Row="1" Text="{Binding Username}"/>
 
-        <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+                <TextBlock Text="Password" Grid.Row="2" VerticalAlignment="Center"/>
 
-            <TextBlock Text="Password"/>
-            <controls:BindablePasswordBox Grid.Row="1" Password="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        </Grid>
+                <controls:BindablePasswordBox Grid.Row="3" Password="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
-        <Button Grid.Row="2" Content="Sign up" Command="{Binding SignUpCommand}"/>
+                <Button Grid.Row="4" Content="Sign up" Style="{StaticResource Style.Button.Accent}" Command="{Binding SignUpCommand}" Margin="0,8,0,0"/>
+            </Grid>
+        </Border>
+        <Button Grid.Row="3" Content="Sign in" Style="{StaticResource Style.Button.Flat}"/>
     </Grid>
 </UserControl>
