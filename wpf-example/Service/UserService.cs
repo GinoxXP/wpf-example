@@ -25,5 +25,25 @@ namespace wpf_example.Service
                 context.SaveChanges();
             }
         }
+
+        public void SignIn(string username, string password)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrWhiteSpace(username))
+                throw new Exception("Invalid username");
+
+            if (string.IsNullOrEmpty(password) || string.IsNullOrWhiteSpace(password))
+                throw new Exception("Invalid password");
+
+            using (var context = new ApplicationContext())
+            {
+                var user = context.Users.FirstOrDefault(x => x.Username == username);
+
+                if (user == null)
+                    throw new Exception("User dosn't exists");
+
+                if (user.Password != password)
+                    throw new Exception("Wrong password");
+            }
+        }
     }
 }
