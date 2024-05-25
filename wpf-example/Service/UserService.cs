@@ -2,6 +2,8 @@
 using wpf_example.DB;
 using System.Linq;
 using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace wpf_example.Service
 {
@@ -20,7 +22,10 @@ namespace wpf_example.Service
                 if (context.Users.FirstOrDefault(x => x.Username == username) != null)
                     throw new Exception("Username already exists");
 
-                var user = new User() { Username = username, Password = password };
+                var salt = Guid.NewGuid().ToString();
+                var passwordHash = GenerateSaltedHash(password, salt);
+
+                var user = new User() { Username = username, PasswordHash = passwordHash, Salt = salt};
                 context.Users.Add(user);
                 context.SaveChanges();
             }
@@ -41,9 +46,26 @@ namespace wpf_example.Service
                 if (user == null)
                     throw new Exception("User dosn't exists");
 
-                if (user.Password != password)
+                var passwordHasg = GenerateSaltedHash(password, user.Salt);
+
+                if (user.PasswordHash != passwordHasg)
                     throw new Exception("Wrong password");
             }
+        }
+
+        private string GenerateSaltedHash(string password, string salt)
+        {
+            var saltedPassword = $"{password} . {salt}";
+            var bytes = Encoding.UTF8.GetBytes(saltedPassword);
+
+            byte[] saltedHash;
+
+            using (SHA512 sha512 = SHA512.Create())
+            {
+                saltedHash = sha512.ComputeHash(bytes);
+            }
+
+            return Encoding.UTF8.GetString(saltedHash);
         }
     }
 }
