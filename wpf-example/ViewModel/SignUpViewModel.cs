@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows;
 using wpf_example.Core;
 using wpf_example.Service;

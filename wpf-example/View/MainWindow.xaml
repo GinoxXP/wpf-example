@@ -4,22 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpf_example"
-        xmlns:view="clr-namespace:wpf_example.View"
         xmlns:vm="clr-namespace:wpf_example.ViewModel"
         mc:Ignorable="d"
-            d:DataContext="{d:DesignInstance Type=vm:MainViewModel, IsDesignTimeCreatable=True}"
-
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel, IsDesignTimeCreatable=True}"
         Title="MainWindow" Height="450" Width="800">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
     <Grid Background="{StaticResource Brush.Background}">
         <ContentControl MaxHeight="300" MaxWidth="300" Content="{Binding NavigationService.CurrentViewModel}"/>
-        <!--<view:SignUpView MaxHeight="300" MaxWidth="300"/>-->
-        <!--<view:SignInView MaxHeight="300" MaxWidth="300"/>-->
     </Grid>
 </Window>
