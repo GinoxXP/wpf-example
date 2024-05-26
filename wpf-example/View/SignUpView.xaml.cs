@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-using wpf_example.ViewModel;
 
 namespace wpf_example.View
 {
@@ -8,7 +7,6 @@ namespace wpf_example.View
         public SignUpView()
         {
             InitializeComponent();
-            DataContext = new SignUpViewModel();
         }
     }
 }

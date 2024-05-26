@@ -7,9 +7,9 @@ using System.Text;
 
 namespace wpf_example.Service
 {
-    public class UserService
+    public class UserService : IUserService
     {
-        public void Create(string username, string password)
+        public void SignUp(string username, string password)
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrWhiteSpace(username))
                 throw new Exception("Invalid username");

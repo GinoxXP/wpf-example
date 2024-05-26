@@ -47,6 +47,6 @@
                 <Button Grid.Row="4" Content="Sign up" Style="{StaticResource Style.Button.Accent}" Command="{Binding SignUpCommand}" Margin="0,8,0,0"/>
             </Grid>
         </Border>
-        <Button Grid.Row="3" Content="Sign in" Style="{StaticResource Style.Button.Flat}"/>
+        <Button Grid.Row="3" Content="Sign in" Style="{StaticResource Style.Button.Flat}" Command="{Binding NavigateToSignInCommand}"/>
     </Grid>
 </UserControl>

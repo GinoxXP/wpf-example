@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using wpf_example.ViewModel;
 
 namespace wpf_example
 {
