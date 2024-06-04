@@ -3,8 +3,9 @@
 Demo sign up/sign in application.
 
 Uses:
-- *SQLite*;
-- *WPF*.
+- *WPF*;
+- *Entity Framework*;
+- *SQLite*.
 
 Designed by *MVVM* pattern.
 
@@ -15,5 +16,5 @@ Designed by *MVVM* pattern.
 ## Features
 
 - Sign up user;
-- Sin in user;
+- Sign in user;
 - Salted hash password;
